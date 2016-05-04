@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerCtrl : MonoBehaviour {
@@ -26,10 +27,25 @@ public class PlayerCtrl : MonoBehaviour {
 
     public Animation _animation;
 
+    public int hp = 100;
+
+    private int initHp;
+
+    public Image imgHpbar;
+
+    public delegate void PlayerDieHandler();
+    public static event PlayerDieHandler OnPlayerDie;
+
+    private GameMgr gameMgr;
+
     // Use this for initialization
     void Start () {
 
+        initHp = hp;
+
         tr = GetComponent<Transform>();
+
+        gameMgr = GameObject.Find("GameManager").GetComponent<GameMgr>();
 
         _animation = GetComponentInChildren<Animation>();
 
@@ -43,8 +59,8 @@ public class PlayerCtrl : MonoBehaviour {
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
 
-        Debug.Log("H = " + h.ToString());
-        Debug.Log("V = " + v.ToString());
+        //Debug.Log("H = " + h.ToString());
+        //Debug.Log("V = " + v.ToString());
 
         Vector3 moveDir = ( Vector3.forward * v ) + ( Vector3.right * h );
 
@@ -73,5 +89,40 @@ public class PlayerCtrl : MonoBehaviour {
             _animation.CrossFade(anim.idle.name, 0.3f);
         }
 
+    }
+
+    void OnTriggerEnter(Collider coll)
+    {
+        if(coll.gameObject.tag == "PUNCH")
+        {
+            hp -= 10;
+
+            imgHpbar.fillAmount = (float)hp / (float)initHp;
+
+            Debug.Log("Player HP = " + hp.ToString());
+
+            if(hp <= 0)
+            {
+                PlayerDie();
+            }
+        }
+    }
+
+    void PlayerDie()
+    {
+        Debug.Log("Player Die !!");
+
+        //GameObject[] monsters = GameObject.FindGameObjectsWithTag("MONSTER");
+
+        //foreach(GameObject monster in monsters)
+        //{
+        //    monster.SendMessage("OnPlayerDie", SendMessageOptions.DontRequireReceiver);
+        //}
+
+        OnPlayerDie();
+
+        //gameMgr.isGameOver = true;
+
+        GameMgr.instance.isGameOver = true;
     }
 }
