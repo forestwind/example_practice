@@ -7,11 +7,22 @@ public class PhotonInit : MonoBehaviour {
     public string version = "V1.0";
 
     public InputField userId;
-	
-	void Awake ()
+
+    public InputField roomName;
+
+    public GameObject scrollContents;
+
+    public GameObject roomItem;
+
+    void Awake()
     {
-        PhotonNetwork.ConnectUsingSettings(version);
-	}
+        if (!PhotonNetwork.connected)
+        {
+            PhotonNetwork.ConnectUsingSettings(version);
+        }
+
+        roomName.text = "Room_" + Random.Range(0, 999).ToString("000");
+    }
 
     void OnJoinedLobby()
     {
@@ -70,6 +81,77 @@ public class PhotonInit : MonoBehaviour {
         PlayerPrefs.SetString("USER_ID", userId.text);
 
         PhotonNetwork.JoinRandomRoom();
+    }
+
+    public void OnClickCreateRoom()
+    {
+        string _roomName = roomName.text;
+       
+        if( string.IsNullOrEmpty(roomName.text))
+        {
+            _roomName = "Room_" + Random.Range(0, 999).ToString("000");
+        }
+
+        PhotonNetwork.player.name = userId.text;
+
+        PlayerPrefs.SetString("USER_ID", userId.text);
+
+        RoomOptions roomOptions = new RoomOptions();
+        roomOptions.isOpen = true;
+        roomOptions.isVisible = true;
+        roomOptions.maxPlayers = 20;
+
+
+        PhotonNetwork.CreateRoom(_roomName, roomOptions, TypedLobby.Default);
+    }
+
+    //룸 생성 실패할 때 호출되는 콜백 함수
+    void OnPhotonCreateRoomFailed(object[] codeAndMsg)
+    {
+        Debug.Log("Create Room Failed =" + codeAndMsg[1]);
+    }
+
+  // 생성된 룸 목록이 변경됬을 때 호출되는 콜백 함수
+    void OnReceivedRoomListUpdate()
+    {
+        foreach( GameObject obj in GameObject.FindGameObjectsWithTag("ROOM_ITEM"))
+        {
+            Destroy(obj);
+        }
+
+        int rowCount = 0;
+        //스크롤 영역 초기화
+        scrollContents.GetComponent<RectTransform>().sizeDelta = Vector2.zero;
+
+
+        foreach (RoomInfo _room in PhotonNetwork.GetRoomList())
+        {
+            Debug.Log(_room.name);
+
+            GameObject room = (GameObject)Instantiate(roomItem);
+
+            room.transform.SetParent(scrollContents.transform, false);
+
+            RoomData roomData = room.GetComponent<RoomData>();
+            roomData.roomName = _room.name;
+            roomData.connectPlayer = _room.playerCount;
+            roomData.maxPlayers = _room.maxPlayers;
+
+            roomData.DispRoomData();
+
+            roomData.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(delegate { OnClickRoomItem(roomData.roomName); });
+
+            scrollContents.GetComponent<GridLayoutGroup>().constraintCount = ++rowCount;
+            scrollContents.GetComponent<RectTransform>().sizeDelta += new Vector2(0, 20);
+        }
+    }
+
+    void OnClickRoomItem(string roomName)
+    {
+        PhotonNetwork.player.name = userId.text;
+        PlayerPrefs.SetString("USER_ID", userId.text);
+
+        PhotonNetwork.JoinRoom(roomName);
     }
 
 
