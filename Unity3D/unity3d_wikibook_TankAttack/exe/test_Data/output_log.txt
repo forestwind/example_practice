@@ -1,0 +1,128 @@
+Initialize engine version: 5.3.4f1 (fdbb5133b820)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GT 730M (ID=0xfe1)
+    Vendor:   NVIDIA
+    VRAM:     1994 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\Photon3Unity3D.dll (this message is harmless)
+Loading \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
+Platform assembly: \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.459 seconds
+Platform assembly: \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\System.dll (this message is harmless)
+desktop: 1600x900 60Hz; virtual: 1600x900 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.224865 ms
+NullReferenceException: Object reference not set to an instance of an object
+  at CannonCtrl.Awake () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at TurretCtrl.Awake () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Entered Lobby
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Operation failed: OperationResponse 225: ReturnCode: 32760 (No match found). Parameters: {}
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+No Rooms !
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Enter Room
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 4.896699 ms
+
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 663.
+Total: 0.871576 ms (FindLiveObjects: 0.048947 ms CreateObjectMapping: 0.055657 ms MarkObjects: 0.551446 ms  DeleteObjects: 0.215131 ms)
+
+Initialize engine version: 5.3.4f1 (fdbb5133b820)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GT 730M (ID=0xfe1)
+    Vendor:   NVIDIA
+    VRAM:     1994 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\Assembly-UnityScript-firstpass.dll (this message is harmless)
+Loading \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
+Platform assembly: \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\Photon3Unity3D.dll (this message is harmless)
+Loading \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
+Platform assembly: \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.324 seconds
+Platform assembly: \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: \\MSDN-SPECIAL\CriticalFile\example\Unity3D\unity3d_wikibook_TankAttack\exe\test_Data\Managed\System.dll (this message is harmless)
+desktop: 1600x900 60Hz; virtual: 1600x900 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.734208 ms
+NullReferenceException: Object reference not set to an instance of an object
+  at CannonCtrl.Awake () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at TurretCtrl.Awake () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+Entered Lobby
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Enter Room
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 6.094723 ms
+
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 736.
+Total: 1.353944 ms (FindLiveObjects: 0.070657 ms CreateObjectMapping: 0.098683 ms MarkObjects: 0.862892 ms  DeleteObjects: 0.320920 ms)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 1604 -> priority: 1 
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 19f4 -> priority: 1 

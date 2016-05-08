@@ -8,25 +8,58 @@ public class TurretCtrl : MonoBehaviour {
 
     public float rotSpeed = 5.0f;
 
-	// Use this for initialization
-	void Start () {
+    private PhotonView pv = null;
+    private Quaternion currRot = Quaternion.identity;
+
+	
+	void Awake () {
         tr = GetComponent<Transform>();
+        pv = GetComponent<PhotonView>();
+
+        pv.ObservedComponents[0] = this;
+        pv.synchronization = ViewSynchronization.UnreliableOnChange;
+
+        currRot = tr.localRotation;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        Debug.DrawRay(ray.origin, ray.direction * 100.0f, Color.red);
-
-        if( Physics.Raycast(ray, out hit , Mathf.Infinity, 1<<8))
+        if (pv.isMine)
         {
-            Vector3 relative = tr.InverseTransformPoint(hit.point);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            //역탄젠트 함수로 두점간의 각도 계산
-            // 라디언 단위에 Rad2Deg를 곱해 각도로 변경
-            float angle = Mathf.Atan2(relative.x, relative.z) * Mathf.Rad2Deg;
-            tr.Rotate(0, angle * Time.deltaTime * rotSpeed, 0);
+            Debug.DrawRay(ray.origin, ray.direction * 100.0f, Color.red);
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, 1 << 8))
+            {
+                Vector3 relative = tr.InverseTransformPoint(hit.point);
+
+                //역탄젠트 함수로 두점간의 각도 계산
+                // 라디언 단위에 Rad2Deg를 곱해 각도로 변경
+                float angle = Mathf.Atan2(relative.x, relative.z) * Mathf.Rad2Deg;
+                tr.Rotate(0, angle * Time.deltaTime * rotSpeed, 0);
+            }
         }
+        else
+        {
+            tr.localRotation = Quaternion.Slerp(tr.localRotation, currRot, Time.deltaTime * 3.0f);
+        }
+
 	}
+
+    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.isWriting)
+        {
+            stream.SendNext(tr.localRotation);
+        }
+        else
+        {
+            currRot = (Quaternion)stream.ReceiveNext();
+        }
+
+    }
+
+
 }

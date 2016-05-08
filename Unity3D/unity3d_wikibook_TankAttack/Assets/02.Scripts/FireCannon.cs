@@ -11,6 +11,8 @@ public class FireCannon : MonoBehaviour {
 
     public Transform firePos;
 
+    private PhotonView pv = null;
+
 	void Awake ()
     {
         cannon = (GameObject)Resources.Load("Cannon");
@@ -18,17 +20,21 @@ public class FireCannon : MonoBehaviour {
         fireSfx = Resources.Load<AudioClip>("CannonFire");
 
         sfx = GetComponent<AudioSource>();
+
+        pv = GetComponent<PhotonView>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
-        if(Input.GetMouseButtonDown(0))
+        if( pv.isMine && Input.GetMouseButtonDown(0))
         {
             Fire();
+            pv.RPC("Fire", PhotonTargets.Others, null);
         }
 	}
     
+    [PunRPC]
     void Fire()
     {
         sfx.PlayOneShot(fireSfx, 1.0f);
