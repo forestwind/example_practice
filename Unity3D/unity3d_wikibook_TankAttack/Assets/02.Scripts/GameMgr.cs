@@ -6,13 +6,49 @@ public class GameMgr : MonoBehaviour {
 
     public Text txtConnect;
 
+    public Text txtLogMsg;
+
+    private PhotonView pv;
+
 	void Awake () {
 
+        pv = GetComponent<PhotonView>();
         CreateTank();
         PhotonNetwork.isMessageQueueRunning = true;
 
         GetConnectPlayerCount();
 	}
+
+    IEnumerator Start()
+    {
+        string msg = "\n<color=#00ff00> [" + PhotonNetwork.player.name + "] Connected</color>";
+        pv.RPC("LogMsg", PhotonTargets.AllBuffered,msg);
+
+        yield return new WaitForSeconds(2.0f);
+
+        SetConnectPlayerScore();
+    }
+
+
+    void SetConnectPlayerScore()
+    {
+        PhotonPlayer[] players = PhotonNetwork.playerList;
+
+        foreach ( PhotonPlayer _player in players)
+        {
+            Debug.Log("[" + _player.ID + "]" + _player.name + " " + _player.GetScore() + "kill");
+
+        }
+
+        GameObject[] tanks = GameObject.FindGameObjectsWithTag("TANK");
+
+        foreach ( GameObject tank in tanks)
+        {
+            int currKillCount = tank.GetComponent<PhotonView>().owner.GetScore();
+            tank.GetComponent<TankDamage>().txtKillCount.text = currKillCount.ToString();
+        }
+
+    }
 
     void CreateTank()
     {
@@ -37,8 +73,17 @@ public class GameMgr : MonoBehaviour {
         GetConnectPlayerCount();
     }
 
+    [PunRPC]
+    void LogMsg(string msg)
+    {
+        txtLogMsg.text = txtLogMsg.text + msg;
+    }
+
     public void OnClickExitRoom()
     {
+
+        string msg = "\n<color=#ff0000> [" + PhotonNetwork.player.name + "] disconnected</color>";
+        pv.RPC("LogMsg", PhotonTargets.AllBuffered, msg);
         PhotonNetwork.LeaveRoom();
     }
 
